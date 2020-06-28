@@ -1,96 +1,99 @@
-<div align="center">
-  <a href="https://koodo.102410.xyz">
-    <img src="assets/icon.ico"  width="80px" height="80px">
-  </a>
-  <h1 align="center">
-    Koodo Reader
-  </h1>
-  <h3 align="center">
-    A electron-based cross-platform epub reader
-  </h3>
+<div align="center" width="128px" height="128px">
+<img src="https://i.loli.net/2020/04/26/wrO8EPokvUQWaf5.png" />
+</div>
 
-[Download](https://github.com/troyeguo/koodo-reader/releases) | [Homepage](http://koodo.102410.xyz/)
-
-  <!-- <a href="https://github.com/getgridea/gridea/releases/latest">
-    <img src="https://img.shields.io/github/release/getgridea/gridea.svg?style=flat-square" alt="">
-  </a>
-
-  <a href="https://github.com/getgridea/gridea/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/getgridea/gridea.svg?style=flat-square" alt="">
-  </a>
+<h1 align="center">
+  Koodo Reader
+</h1>
+<h3 align="center">
+  一个基于 React 和 Electron 开发的 Epub 阅读器
+</h3>
   
-  <a href="https://github.com/getgridea/gridea/releases/latest">
-    <img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/getgridea/gridea/total.svg?color=%2312b886&style=flat-square">
-  </a> -->
-
+<div align="center">
+  <a href="https://github.com/troyeguo/koodo-reader/releases/latest">
+    <img src="https://ci.appveyor.com/api/projects/status/602fp409plq8qcwu?svg=true" alt="">
+  </a>
+    <a href="https://github.com/troyeguo/koodo-reader/releases/latest">
+    <img src="https://travis-ci.com/troyeguo/koodo-reader.svg?branch=master" alt="">
+  </a>
 </div>
 
+## 预览
+
 <div align="center">
-  <img src="/screenshot/manager.jpg" >
+  <a href="https://github.com/troyeguo/koodo-reader/releases/latest">
+    <img src="https://i.loli.net/2020/03/23/UpVulqMBXRcEtJG.jpg" >
+  </a>
+  <a href="https://github.com/troyeguo/koodo-reader/releases/latest">
+    <img src="https://i.loli.net/2020/03/23/jenEPUIuVJzC6bX.jpg" >
+  </a>
   <br/>
-  <img src="/screenshot/reader.jpg" >
 </div>
 
-## Dependencies
+## 简介
 
-English | [简体中文](https://github.com/troyeguo/koodo-reader/blob/master/README-zh_CN.md)
+👏 欢迎使用 **Koodo Reader** ！
 
-<!-- **[CHANGELOG](https://github.com/getgridea/gridea/blob/master/CHANGELOG.md)** -->
+✍️ **Koodo Reader** 是一个开源免费的 Epub 阅读器，支持桌面版和网页版
 
-👏 Welcome to use **Koodo Reader** ！
+## 新功能
 
-✍️ **Koodo Reader** A electron-based cross-platform epub reader using React and Redux
+- 现在 Koodo Reader 支持英文啦！非中文操作系统会自动显示为英文界面
 
-## Features👇
+- Koodo Reader 官网正式上线啦！[点我前往](https://github.com/troyeguo/website-for-koodo-reader)
 
-📝 An elegant Epub Reader supporting backup and restore
+- 支持拖拽添加图书，把图书拖拽到导入图书的按钮上就可以实现添加图书
 
-🌉 Easily manage all you bookmarks, notes, digests and shelfs
+## 特色 👇
 
-🌎 Client-free reading with Koodo web version [here](http://reader.102410.xyz)
+📝 支持书签，高亮，笔记和书摘功能
 
-💻 Use this client on **Windows** or **MacOS** or **Linux**
+🌉 使用书架功能来为您的图书分类
 
-🖥 Customize the source folder and synchronize multiple devices using OneDrive, iCloud, Dropbox, etc.
+🌎 支持 **Windows** ， **MacOS** 和 **网页版**
 
-🌱 Of course **Koodo Reader** is still very young and has many shortcomings, but please believe it will keep moving forward 🏃
+💻 安全的备份和恢复您所有的数据
 
-In the future, it will surely become your inseparable partner
+🖥 通过把备份文件保存到 **OneDrive**, **iCloud**, **Dropbox** 等网盘的本地文件夹，实现同步
 
-😘 Enjoy~
+🌱 当然 **Koodo Reader** 仍然很年轻并且有一些缺陷，但有你的支持它一定会越来越好 🏃
 
-<!-- ## Development
+😘 快去添加你的第一本电子书吧
 
-If you want to contribute code, please check the [Contribution Guide](https://github.com/getgridea/gridea/wiki/%E8%B4%A1%E7%8C%AE%E6%8C%87%E5%8D%97) in advance. -->
+## 使用方法
 
-```shell
-$ # Node version > v10.0.0 is requied
-$ git clone https://github.com/troyeguo/koodo-reader
-$ cd koodo-reader
-$ yarn
-$ yarn dev
-```
+桌面端：前往这里下载最新的安装包 [点我前往](https://github.com/troyeguo/koodo-reader/releases)
 
-## Contract
+网页版：代码托管在 Netlify [点我前往](https://reader.960960.xyz)
 
-[Gitter Chat](https://gitter.im/koodo-reader/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link) | [Email] troyeguo@102410.xyz
+## 运行源码
 
-<!-- ## Example Screenshots
+请确保您电脑的 node 的版本大于 10.0.0，已配置好 yarn，git 的运行环境。
 
-<div align="center">
-  <img src="./files/themes.png">
-</div> -->
+1. 将项目源码下载到本地
 
-## Contributions
+   ```
+   git clone https://github.com/troyeguo/koodo-reader.git
+   ```
 
-We welcome all contributions.You can submit any ideas as [pull requests](https://github.com/troyeguo/koodo-reader/pulls) or as GitHub [issues](https://github.com/troyeguo/koodo-reader/issues).
+2. cd 到项目文件夹，运行以下代码进入客户端模式
 
-<!-- ## Donation -->
+   ```
+   yarn
+   yarn dev
+   ```
 
-<div>
-  <!-- <img src="./files/wechat.png" width="240px"> -->
-</div>
+3. 运行以下代码进入网页模式
 
-## License
+   ```
+   yarn
+   yarn start
+   ```
 
-[MIT](https://github.com/troyeguo/koodo-reader/blob/master/LICENSE). Copyright (c) 2020 App by Troye
+## 后续更新
+
+我会根据大家的反馈不定时更新，当有新版本更新时，Github 会自动向您的客户端推送提醒
+
+## 帮助
+
+您可以在 issue 区提问，我会在力所能及的范围内提供帮助

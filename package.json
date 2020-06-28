@@ -1,17 +1,21 @@
 {
   "name": "koodo-reader",
-  "main": "main.js",
-  "version": "0.1.3",
+  "main": "main.ts",
+  "version": "1.9.1",
   "description": "A cross-platform open source Epub reader ",
   "author": {
     "name": "App by Troye",
-    "email": "troyeguo@102410.xyz"
+    "email": "guo362429@gmail.com"
   },
   "repository": "https://github.com/troyeguo/koodo-desktop",
   "private": true,
   "dependencies": {
     "electron-is-dev": "^1.1.0",
-    "electron-updater": "4.0.0"
+    "electron-updater": "4.0.0",
+    "i18next": "^19.4.4",
+    "i18next-browser-languagedetector": "^4.2.0",
+    "react-dropzone": "^11.0.1",
+    "react-i18next": "^9.0.10"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -22,21 +26,21 @@
     "dev": "concurrently \"cross-env BROWSER=none npm start\" \"wait-on http://localhost:3000/ && electron .\"",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
-    "release": "cross-env GH_TOKEN=ee5f177dc3e11ce8ceccc1ab12c32d1cad5d1d7f electron-builder ",
+    "release": "electron-builder ",
     "prerelease": "npm run build",
     "prepack": "npm run build",
     "predist": "npm run build"
   },
   "homepage": "./",
   "build": {
-    "appId": "koodoReader",
-    "productName": "可道阅读器",
+    "appId": "koodo.960960.xyz",
+    "productName": "Koodo Reader",
     "copyright": "Copyright © 2020 ${author}",
     "files": [
       "build/**/*",
       "node_modules/**/*",
       "package.json",
-      "main.js"
+      "main.ts"
     ],
     "directories": {
       "buildResources": "assets"
@@ -45,31 +49,25 @@
       "github"
     ],
     "extends": null,
-    "mac": {
-      "category": "public.app-category.productivity",
-      "artifactName": "${productName}-${version}-${arch}.${ext}"
-    },
     "dmg": {
-      "background": "assets/appdmg.png",
-      "icon": "assets/icon-mac.icns",
-      "iconSize": 128,
       "contents": [
         {
-          "x": 380,
-          "y": 280,
+          "x": 410,
+          "y": 150,
           "type": "link",
           "path": "/Applications"
         },
         {
-          "x": 110,
-          "y": 280,
+          "x": 130,
+          "y": 150,
           "type": "file"
         }
-      ],
-      "window": {
-        "width": 500,
-        "height": 500
-      }
+      ]
+    },
+    "mac": {
+      "icon": "build/icons/icon.icns",
+      "category": "public.app-category.productivity",
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
     },
     "win": {
       "target": [
@@ -78,12 +76,6 @@
       "icon": "assets/icon.ico",
       "artifactName": "${productName}-Web-Setup-${version}.${ext}",
       "publisherName": "App by Troye"
-    },
-    "nsis": {
-      "allowToChangeInstallationDirectory": true,
-      "oneClick": false,
-      "perMachine": false,
-      "installerSidebar": null
     }
   },
   "eslintConfig": {
@@ -102,9 +94,21 @@
     ]
   },
   "devDependencies": {
+    "@types/i18next": "^13.0.0",
+    "@types/i18next-browser-languagedetector": "^3.0.0",
+    "@types/react-dropzone": "^5.1.0",
+    "@types/react-i18next": "^8.1.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/file-saver": "^2.0.1",
+    "@types/jest": "^25.2.1",
+    "@types/jszip": "^3.4.1",
+    "@types/node": "^13.13.2",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.6",
+    "@types/react-redux": "^7.1.7",
+    "@types/spark-md5": "^3.0.2",
     "classnames": "^2.2.6",
     "concurrently": "^5.0.1",
     "cross-env": "^6.0.3",
@@ -119,12 +123,13 @@
     "react-dom": "^16.12.0",
     "react-fontawesome": "^1.7.1",
     "react-redux": "^7.2.0",
-    "react-scripts": "3.3.0",
+    "react-scripts": "3.4.0",
     "react-simplemde-editor": "^4.1.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "sass-loader": "^8.0.0",
-    "spark-md5": "^3.0.0",
+    "spark-md5": "^3.0.1",
+    "typescript": "^3.8.3",
     "wait-on": "^3.3.0"
   }
 }
