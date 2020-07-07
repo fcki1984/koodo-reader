@@ -18,6 +18,9 @@ import WelcomePage from "../../containers/welcomePage";
 import RecordRecent from "../../utils/recordRecent";
 import "./manager.css";
 import { ManagerProps, ManagerState } from "./interface";
+import { Trans } from "react-i18next";
+import { getParamsFromUrl } from "../../utils/syncUtils/common";
+import copy from "copy-text-to-clipboard";
 class Manager extends React.Component<ManagerProps, ManagerState> {
   timer!: NodeJS.Timeout;
   constructor(props: ManagerProps) {
@@ -25,6 +28,10 @@ class Manager extends React.Component<ManagerProps, ManagerState> {
     this.state = {
       totalBooks: parseInt(localStorage.getItem("totalBooks") || "0") || 0,
       recentBooks: Object.keys(RecordRecent.getRecent()).length,
+      isAuthed: false,
+      isError: false,
+      isCopied: false,
+      token: "",
     };
   }
   //从indexdb里读取书籍
@@ -47,11 +54,22 @@ class Manager extends React.Component<ManagerProps, ManagerState> {
     if (nextProps.isMessage) {
       this.timer = setTimeout(() => {
         this.props.handleMessageBox(false);
-        // this.setState({ isMessage: false });
       }, 2000);
     }
   }
   componentDidMount() {
+    //判断是否是获取token后的回调页面
+    let url = document.location.href;
+    if (url.indexOf("access_token") > -1) {
+      let params: any = getParamsFromUrl();
+      if (params.uid) {
+        this.setState({ token: params.access_token });
+      }
+      this.setState({ isAuthed: true });
+    }
+    if (url.indexOf("error") > -1) {
+      this.setState({ isError: true });
+    }
     this.props.handleFirst(localStorage.getItem("isFirst") || "yes");
   }
 
@@ -60,6 +78,36 @@ class Manager extends React.Component<ManagerProps, ManagerState> {
   }
 
   render() {
+    if (this.state.isError || this.state.isAuthed) {
+      return (
+        <div className="backup-page-finish-container">
+          <div className="backup-page-finish">
+            <span className="icon-message backup-page-finish-icon"></span>
+            <div className="backup-page-finish-text">
+              <Trans>
+                {this.state.isAuthed
+                  ? "Authorize Successfully"
+                  : "Authorize Failed"}
+              </Trans>
+            </div>
+
+            <div
+              className="token-dialog-token-text"
+              onClick={() => {
+                copy(this.state.token);
+                this.setState({ isCopied: true });
+              }}
+            >
+              {this.state.isCopied ? (
+                <Trans>Copied</Trans>
+              ) : (
+                <Trans>Copy Token</Trans>
+              )}
+            </div>
+          </div>
+        </div>
+      );
+    }
     let { mode, notes, digests, bookmarks, covers } = this.props;
     let { totalBooks, recentBooks } = this.state;
     let shelfTitle = Object.keys(ShelfUtil.getShelf());

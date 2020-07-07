@@ -3,20 +3,27 @@ import React from "react";
 import "./digestList.css";
 import DigestModel from "../../model/Digest";
 import { Trans } from "react-i18next";
-import { DigestListProps } from "./interface";
-class DigestList extends React.Component<DigestListProps> {
+import { DigestListProps, DigestListStates } from "./interface";
+import DeleteIcon from "../../components/deleteIcon";
+class DigestList extends React.Component<DigestListProps, DigestListStates> {
+  constructor(props: DigestListProps) {
+    super(props);
+    this.state = { deleteIndex: -1 };
+  }
   //根据bookkey获取
   handleBookName = (bookKey: string) => {
     let { books } = this.props;
     let bookName = "";
     for (let i = 0; i < this.props.books.length; i++) {
-      // console.log(books[i].key === bookKey, "fhgjfhj");
       if (books[i].key === bookKey) {
         bookName = books[i].name;
         break;
       }
     }
     return bookName;
+  };
+  handleShowDelete = (index: number) => {
+    this.setState({ deleteIndex: index });
   };
   render() {
     let { digests } = this.props;
@@ -55,9 +62,25 @@ class DigestList extends React.Component<DigestListProps> {
       });
     });
     const renderDigestListItem = (date: string) => {
-      return digestObj[date].map((item: DigestModel) => {
+      return digestObj[date].map((item: DigestModel, index: number) => {
+        const digestProps = {
+          itemKey: item.key,
+          mode: "digests",
+        };
         return (
-          <li className="digest-list-item" key={item.text}>
+          <li
+            className="digest-list-item"
+            key={item.text}
+            onMouseEnter={() => {
+              this.handleShowDelete(index);
+            }}
+            onMouseLeave={() => {
+              this.handleShowDelete(-1);
+            }}
+          >
+            {this.state.deleteIndex === index ? (
+              <DeleteIcon {...digestProps} />
+            ) : null}
             <div className="digest-list-item-digest">
               <div className="digest-list-item-text-parent">
                 <div className="digest-list-item-text">{item.text}</div>

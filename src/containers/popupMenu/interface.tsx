@@ -7,9 +7,13 @@ export interface PopupMenuProps {
   isOpenMenu: boolean;
   isChangeDirection: boolean;
   menuMode: string;
+  handleHighlighters: (highlighters: HighlighterModel[]) => void;
   handleMessageBox: (isShow: boolean) => void;
   handleMessage: (message: string) => void;
   handleOpenMenu: (isOpenMenu: boolean) => void;
   handleMenuMode: (menu: string) => void;
   handleChangeDirection: (isChangeDirection: boolean) => void;
+}
+export interface PopupMenuStates {
+  deleteKey: string;
 }

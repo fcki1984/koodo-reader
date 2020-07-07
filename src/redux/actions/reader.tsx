@@ -61,7 +61,6 @@ export function handleFetchBookmarks() {
       } else {
         bookmarkArr = value;
       }
-      // console.log(value, "dgaskgskgr");
       dispatch(handleBookmarks(bookmarkArr));
     });
   };
@@ -85,7 +84,7 @@ export function handleFetchHighlighters() {
   return (
     dispatch: (arg0: { type: string; payload: HighligherModel[] }) => void
   ) => {
-    localforage.getItem("highlighters", (err, value) => {
+    localforage.getItem("highlighters", (value) => {
       let highlighterArr: any;
       if (value === null || value === []) {
         highlighterArr = null;
